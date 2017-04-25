@@ -5,14 +5,8 @@ block content
     .page-content.inset
       .row
         .col-md-12
-          h1 Say something meaningful here.
-          p.lead Say something worthwhile here.
-          a(href="/") Go home
-          br
-          if (!user)
-            a(href="/login") Login
-            br
-            a(href="/register") Register
-          if (user)
-            p You are currently logged in as #{user.username}
-            a(href="/logout") Logout
+          form(role='form', action="/process",method="post", style='max-width: 300px;')
+            h2 Scan Badge
+            .form-group
+              input.form-control(type='text', name="userID")
+            button.btn.btn-default(type='submit') Submit
