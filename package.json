@@ -1,0 +1,38 @@
+{
+  "name": "nursing-sim-site",
+  "version": "1.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "jade": "^1.11.0",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.9.6",
+    "morgan": "~1.8.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "serve-favicon": "~2.4.2"
+  },
+  "description": "Site for URI Department of Nursing",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcalcampbell/Nursing-Simulation-Site.git"
+  },
+  "keywords": [
+    "urinursing"
+  ],
+  "author": "James Campbell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcalcampbell/Nursing-Simulation-Site/issues"
+  },
+  "homepage": "https://github.com/jcalcampbell/Nursing-Simulation-Site#readme"
+}
