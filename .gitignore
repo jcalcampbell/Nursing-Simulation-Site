@@ -1,1 +1,12 @@
-# Created by .ignore support plugin (hsz.mobi)
+# Dependency folder
+node_modules
+
+# idea folder
+.idea
+
+#Database Files
+data/db/*
+
+# Mac Files
+~*
+.DS_Store

@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  #page-content-wrapper
+    .page-content.inset
+      .row
+        .col-md-12
+          h1 Say something meaningful here.
+          p.lead Say something worthwhile here.
+          a(href="/") Go home
+          br
+          if (!user)
+            a(href="/login") Login
+            br
+            a(href="/register") Register
+          if (user)
+            p You are currently logged in as #{user.username}
+            a(href="/logout") Logout
