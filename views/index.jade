@@ -1,12 +1,11 @@
 extends layout
 
 block content
-  #page-content-wrapper
-    .page-content.inset
-      .row
-        .col-md-12
-          form(role='form', action="/process",method="post", style='max-width: 300px;')
-            h2 Scan Badge
-            .form-group
-              input.form-control(type='text', name="userID")
-            button.btn.btn-default(type='submit') Submit
+    .container
+        .row
+            .col-md-12
+                form(role='form', action="/process",method="post", style='max-width: 300px;')
+                    h2 Scan Badge
+                    .form-group
+                        input.form-control(type='text', name="userID")
+                    button.btn.btn-default(type='submit') Submit

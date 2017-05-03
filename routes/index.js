@@ -4,45 +4,52 @@
  *  login.js
  *  Router file for both standard and admin login
  */
-var express = require('express');
-var router = express.Router();
-var passport = require('passport');
-var Account = require('../models/account');
+module.exports = function (app, passport) {
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Nursing Simulator', user: req.user });
-});
-// Registration Page
-router.get('/register', function (req, res) {
-    res.render('register', { title: 'Admin Registration' });
-});
-router.post('/register', function(req, res) {
-    Account.register(new Account({ username : req.body.username }), req.body.password, function(err) {
-        if (err) {
-            return res.render('register', { title: 'Admin Registration', info: "Sorry. That username already exists. Try again." });
-        }
-        passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
-        });
+    /* GET home page. */
+    app.get('/', function (req, res) {
+        res.render('index', {title: 'Nursing Simulator', user: req.user});
     });
-});
-// Login page
-router.get('/login', function (req, res) {
-    res.render('login', { user: req.user });
-});
-router.post('/login', passport.authenticate('local', { failWithError: true }),
-    function (req, res, next) {
-        res.redirect('/');
-    },
-    function (err, req, res, next) {
-        return res.render('login', { info: 'Invalid username or password' });
-    }
-);
-// Logout
-router.get('/logout', function (req, res) {
-    req.logout();
-    res.redirect('/');
-});
 
-module.exports = router;
+    /** Authentication **/
+
+    // Login
+    app.get('/login', function (req, res) {
+        res.render('login', {message: req.flash('loginMessage')});
+    });
+    // Process login
+    app.post('/login', passport.authenticate('local-login', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
+    }));
+
+    // Signup
+    // show signup
+    app.get('/signup', function (req, res) {
+        res.render('signup', {message: req.flash('signupMessage')});
+    });
+    // process signup
+    app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect: '/',
+        failureRedirect: '/signup',
+        failureFlash: true
+    }));
+
+    // Logout
+    app.get('/logout', function (req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
+};
+
+// logged in middleware
+function isLoggedIn(req, res, next) {
+    // check to see if logged in
+    if (req.isAuthenticated())
+        return next();
+
+    // if not redirect to login
+    res.redirect('/login');
+}

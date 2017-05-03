@@ -1,11 +1,10 @@
 extends layout
 
 block content
-  #page-content-wrapper
-    .page-content.inset
+  .container-fluid
       .row
-        .col-md-12
-          h1 Admin Login Page
+        .col-sm-2
+          h1 Admin Login
           br
           form(role='form', action="/login",method="post", style='max-width: 300px;')
             .form-group
