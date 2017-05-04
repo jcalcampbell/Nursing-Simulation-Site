@@ -1,12 +1,13 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+var mongoose = require('mongoose');
 
-var Medication = new Schema({
+var medicationSchema = mongoose.Schema({
+
     // Medication Administration
     physicianName: String,
     medicationName: String,
-    date: Date.now,
+    date: Date,
     administrator: String
+
 });
 
-module.exports = mongoose.model('Medication', Medication);
+module.exports = mongoose.model('Medication', medicationSchema);

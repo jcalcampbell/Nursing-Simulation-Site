@@ -29,7 +29,11 @@ app.set('view options', { layout: false });
 // Mongoose
 mongoose.connect('mongodb://localhost/urinursing');
 require('./lib/passport')(passport);
-if (app.get('env')==='development') require('./models/user-seed');
+require('./models/user-seed');
+require('./models/patient-seed');
+require('./models/medicationAdmin-seed');
+require('./models/vitals-seed');
+
 
 // Middleware
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

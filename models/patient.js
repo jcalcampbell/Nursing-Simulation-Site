@@ -1,7 +1,7 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+var mongoose = require('mongoose');
 
-var Patient = new Schema({
+var patientSchema = mongoose.Schema({
+
     firstName: String,
     lastName: String,
     age: Number,
@@ -13,6 +13,7 @@ var Patient = new Schema({
     dateAdministered: Date,
     status: String,
     bloodType: String
+
 });
 
-module.exports = mongoose.model('Patient', Patient);
+module.exports = mongoose.model('Patient', patientSchema);

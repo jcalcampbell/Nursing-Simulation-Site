@@ -6,5 +6,5 @@ User.find(function (err, users) {
     new User({
         username: 'admin',
         password: '$2a$08$xuFS90fkcYaozXsQ/NPWlePemaotJO4m3MAI9.b72B2vhIcSd2Lle'
-    });
+    }).save();
 });

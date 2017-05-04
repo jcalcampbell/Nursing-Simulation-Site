@@ -1,20 +1,19 @@
 extends layout
 
 block content
-    .container-fluid
-        .row
-            .col-sm-2
-                h1
-                    span(class='fa fa-sign-in')
-                    h1 Signup
-                if message.length
-                    div(class='alert alert-danger') #{message}
+  .container-fluid
+    .row
+      .col-sm-6
+        h1
+          span(class='fa fa-sign-in')
+        if message.length
+          div(class='alert alert-danger') #{message}
 
-                form(action='/signup' method='post')
-                    .form-group
-                        label Username
-                        input.form-control(type='text' name='username')
-                    .form-group
-                        label Password
-                        input.form-control(type='password' name='password')
-                    button(type='submit' class='btn btn-warning') Register
+        form(action='/signup' method='post')
+          .form-group
+            label Username
+            input.form-control(type='text' name='username')
+          .form-group
+            label Password
+            input.form-control(type='password' name='password')
+          button(type='submit' class='btn btn-warning') Register

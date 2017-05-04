@@ -1,0 +1,88 @@
+extends layout
+
+block content
+  br
+  .container
+    .row
+      .col-sm-6
+        h2 Admin Dashboard
+    .row
+      .col-sm-6
+        .well
+          h3 Search for Entry
+          button#search-patients.btn.btn-primary Search Patients
+          br
+          br
+          button#search-medicines.btn.btn-primary Search Medication
+      .col-sm-6
+        .well
+          h3 Create New Entry
+          button#add-patients.btn.btn-primary New Patient
+          br
+          br
+          a(href='/#')
+            button.btn.btn-primary New Medicine
+          br
+          br
+          a(href='/signup')
+            button.btn.btn-primary Create Admin Account
+    br
+    #search-patient(style='display:none')
+      .row
+        .col-sm-12
+          form(action='/search?type=patient' method='post', role='form', style='max-width: 300px;')
+            .form-group
+              .input-group
+                span.input-group-btn
+                  button.btn.btn-primary(type='submit') Search
+                input.form-control(type='text', name='patient', placeholder='Patient Name')
+    #search-medicine(style='display:none')
+      .row
+        .col-sm-12
+          form(action='/search?type=medicine' method='post', role='form', style='max-width: 300px;')
+            .form-group
+              .input-group
+                span.input-group-btn
+                  button.btn.btn-primary(type='submit') Search
+                input.form-control(type='text', name='medicine', placeholder='Medication Name')
+    #add-patient(style='display:none')
+      .row
+        .col-sm-12
+          .well
+            h4 Add Patient Info
+            form(action='/add?type=patient' method='post', role='form', style='max-width: 300px;')
+              .form-group
+                input.form-control(type='text', name="firstName", placeholder='First Name')
+              .form-group
+                input.form-control(type='text', name="lastName", placeholder='Last Name')
+              .form-group
+                input.form-control(type='number', name="age", placeholder='Age')
+              .form-group
+                input.form-control(type='number', name="birthDate", placeholder='Birth Date MMDDYYYY')
+              .form-group
+                input.form-control(type='text', name="gender", placeholder='Gender')
+              .form-group
+                input.form-control(type='text', name="city", placeholder='City')
+              .form-group
+                input.form-control(type='text', name="state", placeholder='State')
+              .form-group
+                input.form-control(type='number', name="zipCode", placeholder='Zipcode')
+              .form-group
+                input.form-control(type='text', name="status", placeholder='Status')
+              .form-group
+                input.form-control(type='text', name="bloodType", placeholder='Blood Type')
+              button.btn.btn-primary(type='submit') Submit
+
+block scripts
+  script.
+      $('#search-patients').click(function () {
+          $('#search-patient').toggle();
+      });
+  script.
+      $('#search-medicines').click(function () {
+          $('#search-medicine').toggle();
+      });
+  script.
+      $('#add-patients').click(function () {
+          $('#add-patient').toggle();
+      });

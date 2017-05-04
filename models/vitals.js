@@ -1,7 +1,7 @@
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+var mongoose = require('mongoose');
 
-var Vitals = new Schema({
+var vitalsSchema = mongoose.Schema({
+
     // Vitals
     heartRate: Number,
     heartRateSource: String,
@@ -18,6 +18,7 @@ var Vitals = new Schema({
     painScore: Number,
     painLocation: String,
     painDescription: String
+
 });
 
-module.exports = mongoose.model('Vitals', Vitals);
+module.exports = mongoose.model('Vitals', vitalsSchema);
