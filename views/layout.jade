@@ -24,7 +24,8 @@ html
           if (!user)
             a(href='/login', style='color: white; text-decoration: none') Admin Login
           if (user)
-            a(href='/logout', style='color: white; text-decoration: none') Logout
+            a(href='/admin', style='color: white; text-decoration: none') Dashboard |
+            a(href='/logout', style='color: white; text-decoration: none')  Logout
     block content
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
     script(src='js/ie10-viewport-bug-workaround.js')

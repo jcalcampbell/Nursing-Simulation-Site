@@ -14,7 +14,7 @@ module.exports = function (app, passport) {
     });
 
     app.get('/home', function (req, res) {
-        res.render('dashboard', { title: 'Dashboard' });
+        res.render('dashboard', {title: 'Dashboard'});
     });
 
     app.post('/home', function (req, res) {
@@ -25,7 +25,11 @@ module.exports = function (app, passport) {
 
     // Admin Dashboard
     app.get('/admin', isLoggedIn, function (req, res) {
-        res.render('admin-dashboard', { title: 'Admin Dashboard', user: req.user });
+        res.render('admin-dashboard', {
+            title: 'Admin Dashboard',
+            user: req.user,
+            message: req.flash('signupMessage')
+        });
     });
 
     // Search Options
@@ -33,6 +37,18 @@ module.exports = function (app, passport) {
         if (req.query.type === 'patient') {
             console.log('patient');
             console.log(req.body.patient);
+            Patients.find({lastName: req.body.patient}, function (err, patients) {
+                var context = {
+                    patients: patients.map(function (patient) {
+                        return {
+                            firstName: patient.firstName,
+                            lastName: patient.lastName,
+                            status: patient.status
+                        }
+                    })
+                };
+                res.render('view', context);
+            });
         } else if (req.query.type === 'medicine') {
             console.log('medicine');
             console.log(req.body.medicine);
@@ -62,6 +78,13 @@ module.exports = function (app, passport) {
             } else {
                 res.redirect(303, '/admin');
             }
+        }
+        if (req.query.type === 'admin') {
+            passport.authenticate('local-signup', {
+                successRedirect: '/admin',
+                failureRedirect: '/admin',
+                failureFlash: true
+            });
         }
     });
 

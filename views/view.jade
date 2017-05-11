@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 Results
+    for patient in patients
+        .patient
+            h4 #{firstName} #{lastName}
+            h5 Status: #{status}

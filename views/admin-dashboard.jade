@@ -25,7 +25,7 @@ block content
           br
           br
           a(href='/signup')
-            button.btn.btn-primary Create Admin Account
+            button#add-admins.btn.btn-primary Create Admin Account
     br
     #search-patient(style='display:none')
       .row
@@ -72,6 +72,19 @@ block content
               .form-group
                 input.form-control(type='text', name="bloodType", placeholder='Blood Type')
               button.btn.btn-primary(type='submit') Submit
+    if message.length
+      div(class='alert alert-danger') #{message}
+    #add-admin(style='display:none')
+      .row
+        .col-sm-12
+          .well
+            h4 Create Admin
+            form(action='/add?type=admin' method='post', role='form', style='max-width: 300px;')
+              .form-group
+                input.form-control(type='text', name="username", placeholder='Username')
+              .form-group
+                input.form-control(type='password', name="password", placeholder='Password')
+              button.btn.btn-primary(type='submit') Submit
 
 block scripts
   script.
@@ -85,4 +98,8 @@ block scripts
   script.
       $('#add-patients').click(function () {
           $('#add-patient').toggle();
+      });
+  script.
+      $('#add-admins').click(function () {
+          $('#add-admin').toggle();
       });

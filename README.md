@@ -1,7 +1,7 @@
 # Nursing-Simulation-Site
 Simulation Site for URI Department of Nursing
 
-This project was starte to provide nursing students at URI with a mobile platform to access simulated patient data
+This project was started to provide nursing students at URI with a mobile platform to access simulated patient data
 for use in URI's Nursing Sim Labs in White Hall.  This platform allows for various patient simulations to be created
 and help students in practicing giving medication.  The system uses barcodes to lookup patients and medicatation in 
 their various databases and retrieves the data necessary for the current simulation.
@@ -15,6 +15,7 @@ Students:
 Admins:
  - Login with your admin login
  - Options to create new sims using a web form
+ - Options to search current data
  - Options to add new medication to the database
  - Option to print sim data
 
